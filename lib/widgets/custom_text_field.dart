@@ -1,4 +1,3 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:notes_app/constants.dart';
 
@@ -10,7 +9,7 @@ class CustomTextField extends StatelessWidget {
     return TextField(
       cursorColor: kprimarycolor,
       decoration: InputDecoration(
-        hintText: 'Titel',
+        hintText: 'Title',
         hintStyle: TextStyle(color: kprimarycolor),
         enabledBorder: buildBorder(),
         border: buildBorder(),
