@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app/add_note_cubit/cubit/note_cubit/notes_cubit.dart';
 import 'package:notes_app/views/edit_note_view.dart';
+import 'package:notes_app/widgets/edit_view_body.dart';
 
 import '../models/note_model.dart';
 
@@ -56,6 +57,7 @@ class NoteItem extends StatelessWidget {
                 onPressed: () {
                   note.delete();
                   BlocProvider.of<NotesCubit>(context).fecthAllNotes();
+                  showsnack(context, 'Deleting');
                 },
                 icon: const Icon(
                   Icons.delete,
@@ -81,4 +83,14 @@ class NoteItem extends StatelessWidget {
       ),
     );
   }
+}
+
+void snackbar(BuildContext context, String value) {
+  ScaffoldMessenger.of(context).showSnackBar(
+    SnackBar(
+      duration: const Duration(seconds: 3),
+      backgroundColor: Colors.orange.shade300,
+      content: Text(value),
+    ),
+  );
 }

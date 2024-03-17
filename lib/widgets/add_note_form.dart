@@ -59,6 +59,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
                 isLoading: state is AddNotesLoading ? true : false,
                 ontap: () {
                   CheckInformatoin(context);
+
                   setState(() {});
                 },
               );
@@ -83,8 +84,19 @@ class _AddNoteFormState extends State<AddNoteForm> {
           date: formatedcurrentDate,
           color: Colors.blue.value);
       BlocProvider.of<AddNotesCubit>(context).addNote(noteModel);
+      snackbar(context, 'Add Note Success');
     } else {
       autovalidate = AutovalidateMode.always;
     }
+  }
+
+  void snackbar(BuildContext context, String value) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        duration: const Duration(seconds: 3),
+        backgroundColor: Colors.orange.shade300,
+        content: Text(value),
+      ),
+    );
   }
 }
